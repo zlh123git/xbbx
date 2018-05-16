@@ -1,2 +1,36 @@
 server:
+  name: xbbx
   port: 8081
+  contextPath: /xbbx  # 项目根路径配置
+  tomcat:
+         uri-encoding: UTF-8
+
+spring:
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/myself?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+      username: root
+      password: root
+      type: com.alibaba.druid.pool.DruidDataSource
+      filters: stat
+      maxActive: 50
+      initialSize: 6
+      maxWait: 300000
+      minIdle: 6
+      timeBetweenEvictionRunsMillis: 300000
+      minEvictableIdleTimeMillis: 600000
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+  http:
+        encoding:
+                force: true
+                charset: UTF-8
+                enabled: true
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com
+  configuration:
+    mapUnderscoreToCamelCase: true
