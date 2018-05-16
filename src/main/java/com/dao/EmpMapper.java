@@ -2,6 +2,8 @@ package com.dao;
 
 import com.entity.Emp;
 
+import java.util.List;
+
 public interface EmpMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface EmpMapper {
     int updateByPrimaryKeySelective(Emp record);
 
     int updateByPrimaryKey(Emp record);
+
+    List<Emp> selectAllEmp();
 }

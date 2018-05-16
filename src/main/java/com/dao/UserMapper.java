@@ -14,4 +14,8 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    User selectUserByName(String name, String password);
+
+    int updatePwd(Integer id, String newPwd);
 }
