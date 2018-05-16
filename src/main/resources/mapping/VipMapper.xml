@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.VipMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.Vip" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="id_card" property="idCard" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, id_card, name, telephone, address
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from vip
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from vip
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Vip" >
+    insert into vip (id, id_card, name, 
+      telephone, address)
+    values (#{id,jdbcType=INTEGER}, #{idCard,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.entity.Vip" >
+    insert into vip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="idCard != null" >
+        id_card,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="idCard != null" >
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Vip" >
+    update vip
+    <set >
+      <if test="idCard != null" >
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Vip" >
+    update vip
+    set id_card = #{idCard,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

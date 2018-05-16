@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.MealMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.Meal" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="num" property="num" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="count" property="count" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.entity.Meal" extends="BaseResultMap" >
+    <result column="desc" property="desc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, num, name, price, count, status
+  </sql>
+  <sql id="Blob_Column_List" >
+    desc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from meal
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from meal
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Meal" >
+    insert into meal (id, num, name, 
+      price, count, status, 
+      desc)
+    values (#{id,jdbcType=INTEGER}, #{num,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{count,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+      #{desc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.entity.Meal" >
+    insert into meal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="count != null" >
+        count,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="desc != null" >
+        desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null" >
+        #{desc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Meal" >
+    update meal
+    <set >
+      <if test="num != null" >
+        num = #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="count != null" >
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null" >
+        desc = #{desc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.entity.Meal" >
+    update meal
+    set num = #{num,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      count = #{count,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      desc = #{desc,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Meal" >
+    update meal
+    set num = #{num,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      count = #{count,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
