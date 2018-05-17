@@ -5,14 +5,12 @@ import com.entity.User;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author zlh
  * @date 2018/5/16 15:37
  */
 @Service
-@Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl implements UserService {
 
     @Autowired

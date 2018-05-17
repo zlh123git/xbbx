@@ -11,14 +11,6 @@
   <sql id="Base_Column_List" >
     id, name, password, type, status
   </sql>
-  <!--根据姓名查询用户-->
-  <select id="selectUserByName" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from user
-    where name = #{name,jdbcType=VARVHAR}
-  </select>
-
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
