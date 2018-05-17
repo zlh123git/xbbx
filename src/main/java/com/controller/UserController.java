@@ -2,6 +2,10 @@ package com.controller;
 
 import com.entity.User;
 import com.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +18,7 @@ import javax.servlet.http.HttpSession;
  */
 @RestController
 @RequestMapping(value = "/user")
+@Api(description = "用户管理接口")
 public class UserController {
 
     @Autowired
@@ -27,6 +32,10 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/login")
+    @ApiOperation(value = "登录", notes = "登录")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "name", value = "用户名", required = true, paramType = "query"),
+            @ApiImplicitParam(name = "password", value = "密码", required = true, paramType = "query")})
     public String login(String name, String password, HttpSession session) {
         User user = userService.selectUserByName(name, password);
         if (user!=null) {
