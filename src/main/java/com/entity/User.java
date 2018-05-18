@@ -50,4 +50,15 @@ public class User {
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", type='" + type + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

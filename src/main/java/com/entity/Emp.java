@@ -60,4 +60,16 @@ public class Emp {
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Emp{" +
+                "id=" + id +
+                ", num=" + num +
+                ", password='" + password + '\'' +
+                ", type='" + type + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

@@ -72,4 +72,17 @@ public class Meal {
     public void setDesc(String desc) {
         this.desc = desc == null ? null : desc.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Meal{" +
+                "id=" + id +
+                ", num='" + num + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", count=" + count +
+                ", status='" + status + '\'' +
+                ", desc='" + desc + '\'' +
+                '}';
+    }
 }

@@ -50,4 +50,15 @@ public class Vip {
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Vip{" +
+                "id=" + id +
+                ", idCard='" + idCard + '\'' +
+                ", name='" + name + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

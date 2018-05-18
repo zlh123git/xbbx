@@ -50,4 +50,15 @@ public class Provider {
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Provider{" +
+                "id=" + id +
+                ", num='" + num + '\'' +
+                ", name='" + name + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }
